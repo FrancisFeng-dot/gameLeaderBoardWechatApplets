@@ -1,0 +1,317 @@
+/* pages/more/more.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.container>image{
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;bottom:0;left:0;right:0;margin:auto;
+  opacity:0.1;z-index:1;
+}
+
+.userinfo{
+  height:90rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;padding: 0 30rpx;
+  margin-top:14rpx;
+}
+
+.userinfo>view:nth-child(1){
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.userinfo>view:nth-child(1)>image{
+  width:60rpx;
+  height:60rpx;
+  border-radius: 50%;margin-right: 20rpx;
+}
+
+.userinfo>view:nth-child(1)>text{
+  font-family: SourceHanSansCN-Medium;
+  font-size: 24rpx;
+  color:#1A1A1A;
+}
+
+.userinfo>view:nth-child(2){
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.userinfo>view:nth-child(2)>view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userinfo>view:nth-child(2)>view>image{
+  width:32rpx;
+  height:32rpx;
+  margin-left: 40rpx;
+}
+
+.userinfo>view:nth-child(2)>view>text{
+  font-family: SourceHanSansCN-Medium;
+  font-size: 28rpx;
+  color:#1A1A1A;
+  margin-left: 12rpx;
+}
+
+.raiders{
+  width:690rpx;margin:0 auto;height:240rpx;border-radius: 20rpx;
+}
+
+.raiders image{
+  width:690rpx;height:240rpx;border-radius: 20rpx;
+}
+
+.gamelist{
+  display:flex;
+  justify-content:flex-start;
+  align-items: flex-start;
+  width:696rpx;
+  margin:0 auto;
+}
+
+.gamelist>view>button,.gamelist>view>navigator{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right:22rpx;
+  margin-left:22rpx;
+  border:0;
+  background: transparent;
+  padding:0;
+}
+
+.gamelist>view>button::after{
+  border:0;
+}
+
+.gamelist>view>button>image,.gamelist>view>navigator>image{
+  width: 130rpx;
+  height:130rpx;
+  border-radius: 16rpx;
+}
+
+.gamelist>view>button>text,.gamelist>view>navigator>text{
+  font-family:SourceHanSansCN-Regular;font-size:24rpx;
+  margin-top:6rpx;
+}
+
+.gamelisttitle{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #ffffff;
+  padding:24rpx 0 34rpx 30rpx;
+}
+
+.gamelisttitle>image{
+  width:42rpx;
+  height: 42rpx;
+}
+
+.gamelisttitle>text{
+  font-family:SourceHanSansCN-Medium;
+  color:#1A1A1A;
+  font-size:32rpx;
+  margin-left: 20rpx;
+}
+
+/* .box {
+  width: 100%;
+  height: auto;
+  background: #ffffff;
+}
+
+.box_son {
+  width: 100%;
+  height: 160rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 30rpx 0 48rpx;
+  box-sizing:border-box;
+  position:relative;
+}
+
+.box_son>view{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.box_son>view>image{
+  width:130rpx;
+  height:130rpx;
+  border-radius: 20rpx;
+  margin-right: 28rpx;
+}
+
+.box_son>view>view {
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+.box_son>view>view>text:nth-child(1) {
+  font-size: 30rpx;
+  font-family: MicrosoftYaHei;
+  color:#333333;
+}
+
+.box_son>view>view>text:nth-child(2) {
+  font-size: 24rpx;
+  font-family: MicrosoftYaHei;
+  color:#999999;
+}
+
+.box_son>button {
+  width: 140rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius:30rpx;
+  background: #FE4141;
+  font-size: 26rpx;
+  font-family: MicrosoftYaHei;
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+} */
+
+.thinline{
+  width:100%;
+  height:1px;
+  background: #EBEBEB;
+  transform: scale(1,0.5);
+  position:absolute;
+  bottom:0;
+}
+
+.invitefriend{
+  width: 610rpx;
+  height:90rpx;
+  line-height:90rpx;
+  border-radius: 46rpx;
+  background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/together_invitefriend.png');
+  background-size:100% 100%;
+  font-family: MicrosoftYaHei;
+  font-size: 32rpx;
+  color:#ffffff;
+  border:0;margin: 50rpx auto 26rpx;
+}
+
+.invitefriend::after{
+  border:0;
+}
+
+.moregame{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60rpx;
+}
+
+.moregame>view{
+  width: 50rpx;
+  height:1px;
+  background: #D6D6D6;
+}
+
+.moregame>text{
+  font-family: SourceHanSansCN-Regular;
+  font-size: 22rpx;
+  color:#808080;margin: 0 14rpx;
+}
+
+.moneytolottery{
+  position:fixed;
+  top:54%;right:12rpx;
+  background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/icon_index_lotterymoney.png');
+  background-size:100% 100%;
+  width:124rpx;
+  height:160rpx;
+}
+
+.shareindex{
+  position:fixed;
+  top:80%;left:12rpx;
+  background: transparent;
+  background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/icon_index_share.png');
+  background-size:100% 100%;
+  width:136rpx;
+  height:140rpx;
+  border:0;
+  padding:0;
+}
+
+.shareindex::after{
+  border:0;
+}
+
+.mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.bags {
+  width: 600rpx;
+  height: 300rpx;
+  z-index: 1000;
+  background:#ffffff;
+  border-radius: 16rpx;
+  position: fixed;
+  top:0;
+  bottom:0;
+  left: 0;right:0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing:border-box;
+  padding:70rpx 0 20rpx;
+}
+.bags>text{
+  color:#333333;
+  font-size:26rpx;
+}
+.bags>button{
+  color:#ffffff;
+  font-size:26rpx;
+  width: 300rpx;
+  height:68rpx;
+  border-radius: 34rpx;
+  background: #FE4141;
+}
+
+.closepos{
+  position:absolute;
+  width:40rpx;height:40rpx;
+  top:34rpx;right:34rpx;
+}

@@ -1,0 +1,44 @@
+<!--pages/extractq/extractq.wxml-->
+<view class='container'>
+  <view class="balanceshow">
+    <text>可提金额</text>
+    <text>{{totalQ}}元</text>
+    <navigator url="{{hastoken==1?'../incomerecord/incomerecord':'../login/login'}}" open-type="navigate">查看收益记录</navigator>
+  </view>
+  <form report-submit="true" bindsubmit="requestqcoin">
+    <view style="display:flex;flex-direction:column;justify-content:center;align-items:center;margin-bottom:38rpx;margin-top:70rpx;">
+      <text style="color:#333333;font-size:28rpx;margin-bottom:18rpx;">提现金额</text>
+      <view style="width:550rpx;border-bottom:1px solid #E6E6E6;display:flex;justify-content:flex-end;align-items:center;">
+        <text>￥</text>
+        <input name="money" style="width:374rpx;height:60rpx;color:#333333;font-size:28rpx;margin-right:12rpx;" placeholder="满0.3元才可提现" placeholder-style="color:#B3B3B3;font-size:28rpx;"></input>
+      </view>
+    </view>
+    <button formType="submit" class="confirmextract">确认提取</button>
+    <button class="invitefriend" open-type='share'>
+      <text>邀请好友抽奖</text>
+    </button>
+  </form>
+  <view style="width:700rpx;margin:0 auto;margin-top:20rpx;border-radius:12rpx;overflow:hidden;">
+    <ad unit-id="adunit-0a744a1e2668b9fb"></ad>
+  </view>
+  <view style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;box-sizing: border-box;padding:0 40rpx;margin-top:40rpx;">
+    <text style="color:#666666;font-size:26rpx;">提取说明：</text>
+    <text style="color:#999999;font-size:24rpx;line-height:36rpx;margin-top:28rpx;">1、余额满0.3元可提现；
+2、后续每笔手动提现金额至少1元；
+3、每日提现上限50元；
+4、微信官方为保证资金安全要求，提现至微信需实名认证；
+5、提现操作成功后，24小时内将转账到微信零钱包；
+6、如果提现未到账，请尝试取消关注“全民助攻商城”公众号之后重新关注，再进行提现操作；
+7、如有疑问，请联系微信：jjyboc5。
+    </text>
+  </view>
+  <view class='mask' hidden='{{masklayer}}'>
+    <view class='bags'>
+      <image src="https://qmzgcdn.boc7.net/test/alert_close.png" class="closepos" id="promptattent" bindtap='closemask'></image>
+      <text class="size28_color333" style="font-weight:600;">提现提示</text>
+      <text class="size26_color333" style="width:334rpx;text-align:left;">1.首次提现需要关注公众号；
+        2.微信提现需实名认证。</text>
+      <button open-type="contact" class="contact_confirm" session-from='mall_gzh'>点击回复：1</button>
+    </view>
+  </view>
+</view>

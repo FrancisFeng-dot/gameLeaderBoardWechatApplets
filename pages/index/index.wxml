@@ -1,0 +1,159 @@
+<!--pages/more/more.wxml-->
+<view style="position:fixed;top:-10rpx;right:72rpx;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:1001;">
+  <view style="width: 0;height: 0;border-width: 10rpx;border-style: solid;border-color: transparent transparent #FFCD55 transparent;"></view>
+  <view style="height:32rpx;line-height:32rpx;background:#FFCD55;border-radius:16rpx;font-size:20rpx;color:#ffffff;text-align:center;padding:0 8rpx;">添加我的小程序</view>
+</view>
+<view class='container'>
+  <view class="userinfo">
+    <view>
+      <block wx:if="{{hastoken==1}}">
+      <image src="{{headimg}}"></image>
+      <text style="font-size: 30rpx;color:#1A1A1A;width:212rpx;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;margin-right:10rpx;">{{nickname}},</text>
+      </block>
+      <text>欢迎回来</text>
+    </view>
+    <view>
+      <view><image src="https://qmzgcdn.boc7.net/welfare/free_game/myself_moneyicon.png"></image><text>{{gold}}</text></view>
+      <view><image src="https://qmzgcdn.boc7.net/welfare/free_game/myself_redbagicon.png"></image><text>{{money}}</text></view>
+    </view>
+  </view>
+  <swiper autoplay="true" interval="3000" duration="2000" circular="true" indicator-dots="true" class="raiders">  
+    <block wx:for="{{activebanner}}" wx:for-index="key"> 
+      <block wx:if="{{item.type==1}}">
+        <swiper-item>  
+          <navigator target="miniProgram" path="{{item.game_url?item.game_url:'pages/index/index'}}" app-id="{{item.game_appid}}">
+            <image src="{{item.logo}}" class="swiperitem"></image>
+          </navigator>
+        </swiper-item>  
+      </block> 
+      <block wx:if="{{item.type==2}}">
+        <swiper-item bindtap="jumpapplet" data-index="{{key}}" data-type="banner">  
+          <image src="{{item.logo}}" class="swiperitem"></image>
+        </swiper-item>  
+      </block>
+    </block>  
+  </swiper>  
+  <view class="gamelisttitle">
+    <image src="https://qmzgcdn.boc7.net/welfare/free_game/icon_hotrecommend.png"></image>
+    <text>热度飙升</text>
+  </view>
+  <view style="background:#ffffff;padding-bottom:20rpx;position: relative;">
+    <view class="gamelist">
+      <view wx:for='{{box[0]}}' wx:for-index="key">
+        <block wx:if="{{item.type==1}}">
+          <navigator class="reecommendedposition" style="text-align:center;" wx:if="{{key<4}}" target="miniProgram" path="{{item.game_url?item.game_url:'pages/index/index'}}" app-id="{{item.game_appid}}">
+            <image src="{{item.logo}}"></image>
+            <text style="color:{{item.is_red==1?'red;':'color:#1A1A1A;'}}">{{item.game_name}}</text>
+          </navigator>
+        </block> 
+        <block wx:if="{{item.type==2}}">
+          <button bindtap='jumpapplet' data-index="{{key}}" data-type="box" data-gametype="0" class="reecommendedposition" wx:if="{{key<4}}">
+            <image src="{{item.logo}}"></image>
+            <text style="color:{{item.is_red==1?'red;':'color:#1A1A1A;'}}">{{item.game_name}}</text>
+          </button>
+        </block>
+      </view>
+    </view>
+    <view class="thinline" style="margin:0"></view>
+  </view>
+  <view class="gamelisttitle">
+    <image src="https://qmzgcdn.boc7.net/welfare/free_game/icon_masterexclusive.png"></image>
+    <text>高手专属</text>
+  </view>
+  <view style="background:#ffffff;padding-bottom:20rpx;position: relative;">
+    <view class="gamelist">
+      <view wx:for='{{box[1]}}' wx:for-index="key">
+        <block wx:if="{{item.type==1}}">
+          <navigator class="reecommendedposition" style="text-align:center;" wx:if="{{key<4}}" target="miniProgram" path="{{item.game_url?item.game_url:'pages/index/index'}}" app-id="{{item.game_appid}}">
+            <image src="{{item.logo}}"></image>
+            <text style="color:{{item.is_red==1?'red;':'color:#1A1A1A;'}}">{{item.game_name}}</text>
+          </navigator>
+        </block> 
+        <block wx:if="{{item.type==2}}">
+          <button bindtap='jumpapplet' data-index="{{key}}" data-type="box" data-gametype="1" class="reecommendedposition" wx:if="{{key<4}}">
+            <image src="{{item.logo}}"></image>
+            <text style="color:{{item.is_red==1?'red;':'color:#1A1A1A;'}}">{{item.game_name}}</text>
+          </button>
+        </block>
+      </view>
+    </view>
+    <view class="thinline" style="margin:0"></view>
+  </view>
+  <view class="gamelisttitle">
+    <image src="https://qmzgcdn.boc7.net/welfare/free_game/icon_intellectual.png"></image>
+    <text>智力大挑战</text>
+  </view>
+  <view style="background:#ffffff;padding-bottom:20rpx;position: relative;">
+    <view class="gamelist">
+      <view wx:for='{{box[2]}}' wx:for-index="key">
+        <block wx:if="{{item.type==1}}">
+          <navigator class="reecommendedposition" style="text-align:center;" wx:if="{{key<4}}" target="miniProgram" path="{{item.game_url?item.game_url:'pages/index/index'}}" app-id="{{item.game_appid}}">
+            <image src="{{item.logo}}"></image>
+            <text style="color:{{item.is_red==1?'red;':'color:#1A1A1A;'}}">{{item.game_name}}</text>
+          </navigator>
+        </block> 
+        <block wx:if="{{item.type==2}}">
+          <button bindtap='jumpapplet' data-index="{{key}}" data-type="box" data-gametype="2" class="reecommendedposition" wx:if="{{key<4}}">
+            <image src="{{item.logo}}"></image>
+            <text style="color:{{item.is_red==1?'red;':'color:#1A1A1A;'}}">{{item.game_name}}</text>
+          </button>
+        </block>
+      </view>
+    </view>
+    <view class="thinline" style="margin:0"></view>
+  </view>
+  <!-- <view class="gamelisttitle">
+    <image src="https://qmzgcdn.boc7.net/welfare/free_game/icon_moreplayhappy.png"></image>
+    <text>越玩越开心</text>
+  </view>
+  <view style="background:#ffffff;padding-bottom:20rpx;position: relative;">
+    <view class="gamelist">
+      <view wx:for='{{box[3]}}' wx:for-index="key">
+        <block wx:if="{{item.type==1}}">
+          <navigator class="reecommendedposition" style="text-align:center;" wx:if="{{key<4}}" target="miniProgram" path="{{item.game_url?item.game_url:'pages/index/index'}}" app-id="{{item.game_appid}}">
+            <image src="{{item.logo}}"></image>
+            <text style="color:{{item.is_red==1?'red;':'color:#1A1A1A;'}}">{{item.game_name}}</text>
+          </navigator>
+        </block> 
+        <block wx:if="{{item.type==2}}">
+          <button bindtap='jumpapplet' data-index="{{key}}" data-type="box" data-gametype="3" class="reecommendedposition" wx:if="{{key<4}}">
+            <image src="{{item.logo}}"></image>
+            <text style="color:{{item.is_red==1?'red;':'color:#1A1A1A;'}}">{{item.game_name}}</text>
+          </button>
+        </block>
+      </view>
+    </view>
+    <view class="thinline" style="margin:0"></view>
+  </view> -->
+  <view style="width:700rpx;margin:0 auto;margin-top:20rpx;border-radius:12rpx;overflow:hidden;">
+    <ad unit-id="adunit-aeec9ff5444d86fa"></ad>
+  </view>
+  <button class="invitefriend invitetofris" open-type='share'>邀请好友一起玩</button>
+  <view class="moregame">
+    <view></view>
+    <text>更多游戏  敬请期待</text>
+    <view></view>
+  </view>
+  <!-- <view class='box'>
+    <view class='box_son' wx:for='{{box}}' wx:for-index="key" bindtap='jumpapplet' data-index="{{key}}" data-type="box" wx:if="{{key>3}}">
+      <view>
+        <image src="{{item.big_img}}"></image>
+        <view>
+          <text>{{item.game_name}}</text>
+          <text>{{item.description}}</text>
+        </view>
+      </view>
+      <button>直接玩</button>
+      <view class="thinline"></view>
+    </view>
+  </view> -->
+  <navigator class="moneytolottery" url='../lottery/lottery' open-type="switchTab"></navigator>
+  <button class="shareindex invitetofris" open-type='share'></button>
+  <view class='mask' hidden='{{masklayer}}'>
+    <view class='bags'>
+      <image src="https://qmzgcdn.boc7.net/test/alert_close.png" class="closepos" bindtap='closemask'></image>
+      <text>在客服会话中回复“1”</text>
+      <button open-type="contact" session-from="{{contactparams}}">确定</button>
+    </view>
+  </view>
+</view>

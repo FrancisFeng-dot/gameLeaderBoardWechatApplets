@@ -1,0 +1,208 @@
+<!--pages/usercenter/usercenter.wxml-->
+<view class="container">
+<!-- 我的资金情况及试玩游戏 -->
+  <view>
+    <view class="userinfo">
+      <view>
+        <view>
+          <block wx:if="{{hastoken==0}}">
+            <image src="https://qmzgcdn.boc7.net/test/userheadbackimg.png"></image>
+          </block>
+          <block wx:if="{{hastoken==1}}">
+            <image src="{{user.headimg}}"></image>
+          </block>
+        </view>
+        <view>
+          <text>{{user.nickname}}</text>
+          <view>
+            <image src="https://qmzgcdn.boc7.net/welfare/free_game/myself_moneyicon.png"></image>
+            <text style="margin-left:6rpx;margin-right:22rpx;">{{gold}}</text>
+            <image src="https://qmzgcdn.boc7.net/welfare/free_game/myself_redbagicon.png"></image>
+            <text style="margin-left:6rpx;margin-right:16rpx;">{{money}}元</text>
+            <navigator class="extractbutton" url="{{hastoken==1?'../extractq/extractq':'../login/login'}}" open-type="navigate">提现</navigator>
+          </view>
+        </view>
+      </view>
+      <navigator url='../lottery/lottery' open-type="switchTab"></navigator>
+    </view>
+    <view style="background:#ffffff;">
+      <view class="gamelist">
+        <view wx:for="{{gamelist}}" wx:for-index="key">
+          <block wx:if="{{item.type==1}}">
+            <navigator bindtap='clickgame' data-index="{{key}}" wx:if="{{key<5}}" target="miniProgram" path="{{item.game_url?item.game_url:'pages/index/index'}}" app-id="{{item.game_appid}}">
+              <view style="background-image:url('{{item.logo}}')">
+                <block wx:if="{{item.has_play==1}}">
+                  <view></view>
+                  <view>已领取</view>
+                </block>
+              </view>
+              <text style="color:{{item.is_red==1?'red;':'color:#666666;'}}">{{item.game_name}}</text>
+            </navigator>
+          </block> 
+          <block wx:if="{{item.type==2}}">
+            <view bindtap='clickgame' data-index="{{key}}" wx:if="{{key<5}}">
+              <view style="background-image:url('{{item.logo}}')">
+                <block wx:if="{{item.has_play==1}}">
+                  <view></view>
+                  <view>已领取</view>
+                </block>
+              </view>
+              <text style="color:{{item.is_red==1?'red;':'color:#666666;'}}">{{item.game_name}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 我的资金情况及试玩游戏 -->
+  <view class="signinrecord">
+    <text>每日签到赚金币</text>
+    <view>
+      <view>
+        <text>1天</text>
+        <text>2天</text>
+        <text>3天</text>
+        <text>4天</text>
+        <text>5天</text>
+        <text>6天</text>
+        <text>7天</text>
+      </view>
+      <view>
+        <image src="https://qmzgcdn.boc7.net/welfare/free_game/{{item.hassign==1?'battle_hassign':'battle_unhassign'}}.png" wx:for="{{signstar}}"></image>
+        <view></view>
+      </view>
+      <view>
+        <text wx:for="{{signstar}}" style="color:{{item.hassign==1?'#FF7936':'#B3B3B3'}}">+{{item.num}}</text>
+      </view>
+    </view>
+    <block wx:if="{{signin==0}}">
+      <form report-submit="true" bindsubmit="clicksign">
+        <button formType="submit" class="signbutton" id="clicksign">签到领金币</button>
+      </form>
+    </block>
+    <block wx:if="{{signin==1}}">
+      <button style="background:#CCCCCC;" class="signbutton">已连续签到{{has_signnum}}天</button>
+    </block>
+  </view>
+  <!-- 做任务赚金币 -->
+  <view>
+    <view style="font-family: MicrosoftYaHei;font-size: 28rpx;color:#1A1A1A;text-align:center;height:80rpx;line-height:80rpx;background:#ffffff;">做任务赚金币</view>
+    <view class="tasklist">
+      <view style="background:#ffffff;">
+        <image src="https://qmzgcdn.boc7.net/welfare/free_game/dotaskicon_invite.png"></image>
+        <view>
+          <view class="tryplay">
+            <text>邀请1名新好友</text>
+            <view><image src="https://qmzgcdn.boc7.net/welfare/free_game/myself_moneyicon.png"></image><text>{{invitefriendgold}}金币</text></view>
+          </view>
+          <block wx:if="{{invitefriend==0}}">
+          <button style="background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/dotaskbtn_finish.png');" open-type='share' id="invitefriend">去邀请</button>
+          </block>
+          <block wx:if="{{invitefriend==1}}">
+          <button style="background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/dotaskbtn_collargoldcoin.png');" bindtap='taskgold' data-clicktype="5">领{{invitegold}}金币</button>
+          </block>
+          <view class="thinline"></view>
+        </view>
+      </view>
+      <view style="background:#ffffff;">
+        <image src="https://qmzgcdn.boc7.net/welfare/free_game/dotaskicon_lottery.png"></image>
+        <view>
+          <view class="tryplay">
+            <text>参与1次抽奖</text>
+            <view><image src="https://qmzgcdn.boc7.net/welfare/free_game/myself_moneyicon.png"></image><text>{{partlotterygold}}金币</text></view>
+          </view>
+          <block wx:if="{{partinlottery==0}}">
+            <navigator style="background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/dotaskbtn_finish.png');text-align:center;" url='../lottery/lottery' open-type="switchTab">去完成</navigator>
+          </block>
+          <block wx:if="{{partinlottery==1}}">
+            <button style="background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/dotaskbtn_collargoldcoin.png');" bindtap='taskgold' data-clicktype="6">领{{lotterygold}}金币</button>
+          </block>
+          <block wx:if="{{partinlottery==2}}">
+            <button style="background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/dotaskbtn_receive.png');">已领取</button>
+          </block>
+          <view class="thinline"></view>
+        </view>
+      </view>
+      <view style="background:#ffffff;">
+        <image src="https://qmzgcdn.boc7.net/welfare/free_game/dotaskicon_playgame.png"></image>
+        <view>
+          <view class="tryplay">
+            <text>玩3款游戏（{{hasplay_gamenum}}/3）</text>
+            <view><image src="https://qmzgcdn.boc7.net/welfare/free_game/myself_moneyicon.png"></image><text>{{playgamebattle}}金币</text></view>
+          </view>
+          <block wx:if="{{playgame_getgold1==0}}">
+            <navigator style="background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/dotaskbtn_finish.png');text-align:center;" url='../lottery/lottery' open-type="switchTab">去完成</navigator>
+          </block>
+          <block wx:if="{{playgame_getgold1==1}}">
+            <button style="background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/dotaskbtn_collargoldcoin.png');" bindtap='taskgold' data-clicktype="7">领{{getgoldnum1}}金币</button>
+          </block>
+          <block wx:if="{{playgame_getgold1==2}}">
+            <button style="background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/dotaskbtn_receive.png');">已领取</button>
+          </block>
+          <view class="thinline"></view>
+        </view>
+      </view>
+      <view style="background:#ffffff;">
+        <image src="https://qmzgcdn.boc7.net/welfare/free_game/dotaskicon_playgame.png"></image>
+        <view>
+          <view class="tryplay">
+            <text>玩5款游戏（{{hasplay_gamenum}}/5）</text>
+            <view><image src="https://qmzgcdn.boc7.net/welfare/free_game/myself_moneyicon.png"></image><text>{{playgamebattle}}金币</text></view>
+          </view>
+          <block wx:if="{{playgame_getgold2==0}}">
+            <navigator style="background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/dotaskbtn_finish.png');text-align:center;" url='../lottery/lottery' open-type="switchTab">去完成</navigator>
+          </block>
+          <block wx:if="{{playgame_getgold2==1}}">
+            <button style="background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/dotaskbtn_collargoldcoin.png');" bindtap='taskgold' data-clicktype="7">领{{getgoldnum2}}金币</button>
+          </block>
+          <block wx:if="{{playgame_getgold2==2}}">
+            <button style="background-image:url('https://qmzgcdn.boc7.net/welfare/free_game/dotaskbtn_receive.png');">已领取</button>
+          </block>
+          <view class="thinline"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 做任务赚金币 -->
+  <view class="myrecord">
+    <navigator url="../feedback/feedback" open-type="navigate">
+      <text>意见反馈</text>
+      <image src="https://qmzgcdn.boc7.net/test/listicon_in.png"></image>
+    </navigator>
+    <button open-type='contact' session-from='contactcustomer'>
+      <text>联系客服</text>
+      <image src="https://qmzgcdn.boc7.net/test/listicon_in.png"></image>
+    </button>
+    <view bindtap="openlayer" data-layertype="0">
+      <text>商务合作</text>
+      <text style="color:#40B4DA;">lijiling@juanjiyun.com</text>
+    </view>
+  </view>
+  <view style="width:700rpx;margin:0 auto;margin-top:20rpx;margin-bottom:36rpx;border-radius:12rpx;overflow:hidden;">
+    <ad unit-id="adunit-4dd7dba1b0fbc78a"></ad>
+  </view>
+  <view class='mask' hidden='{{masklayer}}'>
+    <block wx:if="{{event==0}}">
+      <view class='bags' style="border-radius:6rpx;width:580rpx;height:340rpx;padding:50rpx;justify-content:space-between;align-items:flex-start;">
+        <text style="color:#1A1A1A;font-size:32rpx;">商务合作邮箱</text>
+        <text style="color:#4D4D4D;">优质游戏免费推广请联系：
+lijiling@juanjiyun.com
+</text>
+        <view style="color:#1A1A1A;font-size:32rpx;align-self:flex-end;"><text bindtap='closemask'>放弃</text><text style="color:#46B431;margin-left:54rpx;" bindtap="clipboard" data-text="132456798@juanjiyun.com" id="seekcooper">复制邮箱</text></view>
+      </view>
+    </block>
+    <block wx:if="{{event==1}}">
+      <view class='bags'>
+        <text>试玩成功，{{needbattle}}战力已存入战力余额</text>
+        <button bindtap='closemask'>确定</button>
+      </view>
+    </block>
+    <block wx:if="{{event==2}}">
+      <view class='bags'>
+        <image src="https://qmzgcdn.boc7.net/test/alert_close.png" class="closepos" bindtap='closemask'></image>
+        <text>在客服会话中回复“1”</text>
+        <button open-type="contact" session-from="{{contactparams}}">确定</button>
+      </view>
+    </block>
+  </view>
+</view>

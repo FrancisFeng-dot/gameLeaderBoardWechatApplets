@@ -1,0 +1,65 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.0",
+	"appid": "wx9d4c2faacdd4ddc0",
+	"projectname": "%E5%85%A8%E6%B0%91%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 1,
+			"list": [
+				{
+					"id": 0,
+					"name": "盒子",
+					"pathName": "pages/prize/prize",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "sdfasdfa",
+					"pathName": "pages/index/index",
+					"query": "userid=N2IyMjc1Njk2NDIyM2EzMjdk"
+				},
+				{
+					"id": -1,
+					"name": "sdfasdf",
+					"pathName": "pages/index/index",
+					"query": "qmyx=dc"
+				},
+				{
+					"id": -1,
+					"name": "sdfasdf",
+					"pathName": "pages/index/index",
+					"query": "qmyx=dc"
+				}
+			]
+		}
+	}
+}

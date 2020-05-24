@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/lottery/lottery",
+    "pages/usercenter/usercenter",
+    "pages/extractq/extractq",
+    "pages/feedback/feedback",
+    "pages/incomerecord/incomerecord",
+    "pages/login/login"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#ffffff",
+    "backgroundColorTop": "#ffffff",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "游戏免费福利",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#FF7936",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/ungame.png",
+        "selectedIconPath": "img/select_game.png"
+      },
+      {
+        "pagePath": "pages/lottery/lottery",
+        "text": "红包抽奖",
+        "iconPath": "img/unredbag_lottery.png",
+        "selectedIconPath": "img/redbag_lottery.png"
+      },
+      {
+        "pagePath": "pages/usercenter/usercenter",
+        "text": "我的",
+        "iconPath": "img/unuser.png",
+        "selectedIconPath": "img/user.png"
+      }
+    ]
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx79ade44c39cefc7f",
+    "wx20194e7827347870",
+    "wxd101b6b8f64db085",
+    "wxd5d38ed289985e2f",
+    "wx78caa30cd32c16b9",
+    "wxbf19d25813d0c61a",
+    "wx52a44b89f434e23c",
+    "wxc1b5d81e4dad1efe",
+    "wx4ebc6d7cac323719",
+    "wxd6f7da4a2fc4aaf3"
+  ]
+}
